@@ -37,9 +37,9 @@ bool palindrom(string s)
     return false;
 }
 TEST_CASE("Good input") {
-    for (char i =33; i<126;i++){
-        CHECK_FALSE(!(palindrom(nospaces(mat(5,9,i,i+1)))));}
-    CHECK(mat(9,3,'a','b')=="this function works");
+    for(int j=1; j<101;j=j+2){
+    for (char i =33; i<126;i++){CHECK_FALSE(!(palindrom(nospaces(mat(j,j+2,i,i+1)))));}
+    }
 }
 
 TEST_CASE("Bad input") {
@@ -48,11 +48,10 @@ TEST_CASE("Bad input") {
 }
 
 TEST_CASE("not valid type input"){
-    //CHECK_THROWS(mat('a', 9,'@','#'));
-    //CHECK_THROWS(mat(3,9.5,3,'#'));
-    //CHECK_THROWS(mat(1, 9,'@',10));
-    //CHECK_THROWS(mat('2', 9,'@','#'));
-    //CHECK_EQ(mat(3.0,9.0,'a','b'),mat(3,9,'a','b'));
+    for (char i=0; i<33;i++)
+    {
+        CHECK_THROWS(mat(7,9,i,i+1));
+    }
 }
 TEST_CASE("The numbers has to be at least 1")
 {

@@ -28,7 +28,7 @@ string nospaces(string input) {
 	std::erase(input, '\r');
 	return input;
 }
-
+/* check if the string is an odd palindrom - if not is not a valid mat*/
 bool palindrom(string s)
 {
     if (s.length()==1){return true;}
@@ -36,45 +36,44 @@ bool palindrom(string s)
     return palindrom (s.substr(1,s.length()-2));}
     return false;
 }
+/*  check for mats with odd int parameter if all the legal char types */
 TEST_CASE("Good input") {
-    for(int j=1; j<101;j=j+2){
+    for(int j=1; j<1000;j=j+2){
     for (char i =33; i<126;i++){CHECK_FALSE(!(palindrom(nospaces(mat(j,j+2,i,i+1)))));}
     }
 }
-
-TEST_CASE("Bad input") {
-    CHECK_THROWS(mat(10, 5, '$', '%'));
-    /* Add more test here */
-}
-
+/* the empty chars not accepted for building mats */
 TEST_CASE("not valid type input"){
     for (char i=0; i<33;i++)
     {
         CHECK_THROWS(mat(7,9,i,i+1));
     }
+    CHECK_THROWS(mat(7,9,127,80));
 }
-TEST_CASE("The numbers has to be at least 1")
-{
-    for (int i=0; i<61; i=i+2)
-    {
-        CHECK_THROWS(mat(0,i,'$','-'));
-        CHECK_THROWS(mat(i,0,'$','-'));
-    }
-}
+/* checking the numbers are even */
 TEST_CASE("The input number's are need to be odd")
 {
-    for (int i=2;i<201; i+=2){
-    CHECK_THROWS(mat(i,i,'^','%'));
-    CHECK_THROWS(mat(i-1,i,'%','G'));
-    CHECK_THROWS(mat(i,i-1, '#','^'));
+    for (int i=0; i<200;i+=2)
+    {
+        CHECK_THROWS(mat(3,i,'^','#'));
+        CHECK_THROWS(mat(i,7,'$','-'));
+        CHECK_THROWS(mat(i,i,'0','1'));
     }
 }
+/*check negative numbers */
 TEST_CASE("no negatives numbers"){
-    for (int i=1; i<100;i++)
+     for(int i=0; i>-1000; i--)
     {
-        CHECK_THROWS(mat(0-i,5,'`','^'));
-        CHECK_THROWS(mat(7,0-i,'&','6'));
-        CHECK_THROWS(mat(0-i,0-i,'&','6'));
-
+        CHECK_THROWS(mat(3,i,'^','#'));
+        CHECK_THROWS(mat(i,7,'$','-'));
+        CHECK_THROWS(mat(i,i,'0','1'));
+        CHECK_THROWS(mat(0,i,'0','1'));
+        CHECK_THROWS(mat(i,0,'0','1'));
+    }
+}
+TEST_CASE("the chars on the mat are the same"){
+    for (char c=0; c<127;c++)
+    {
+        CHECK_THROWS(mat(3,7,c,c));
     }
 }

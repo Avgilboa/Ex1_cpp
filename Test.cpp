@@ -71,9 +71,3 @@ TEST_CASE("no negatives numbers"){
         CHECK_THROWS(mat(i,0,'0','1'));
     }
 }
-TEST_CASE("the chars on the mat are the same"){
-    for (char c=0; c<127;c++)
-    {
-        CHECK_THROWS(mat(3,7,c,c));
-    }
-}

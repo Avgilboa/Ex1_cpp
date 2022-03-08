@@ -42,11 +42,4 @@ https://codegolf.stackexchange.com/questions/241219/mat-printing-matrix
 מערכת הבדיקה האוטומטית מעתיקה מחדש את כל הקבצים הקיימים על-גבי הפתרון שאתם מגישים,
 ולכן כל שינוי שתעשו בקבצים הקיימים יימחק.
 
-</div># Ex1_cpp
-# Ex1_cpp
-# Ex1_cpp
-# Ex1_cpp
-# Ex1_cpp
-# Ex1_cpp
-# Ex1-cpp
-# Ex1-cpp
+</div>
